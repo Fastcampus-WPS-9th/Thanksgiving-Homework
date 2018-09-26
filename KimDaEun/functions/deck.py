@@ -26,6 +26,8 @@ class Deck:
     # 카드 1장 가져오기
     @classmethod
     def pop_cards(cls):
+        if len(cls.cards) == 0:
+            cls.move_pile_to_cards()
         return cls.cards.pop(0)
 
     # 게임 시작 전 선수들에게 카드 4장씩 배분
@@ -52,3 +54,10 @@ class Deck:
         cls.shuffle_cards()
         cls.distribute(player1, player2)
         cls.set_top_of_pile(cls.cards.pop(0))
+
+    # cards가 소진되면 카드더미 옮기기
+    @classmethod
+    def move_pile_to_cards(cls):
+        cls.cards.extend(cls.pile[:-1])
+        cls.shuffle_cards()
+        del cls.pile[:-1]
