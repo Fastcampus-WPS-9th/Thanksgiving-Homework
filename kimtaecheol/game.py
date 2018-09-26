@@ -17,8 +17,9 @@ def start():
         print('=', end='')
     print()
     print()
-    print("{0:^17}".format("[1] 새 게임"))
-    print("{0:^17}".format("[2] 종   료"))
+    print("{0:^17}".format("[1] 새 게 임"))
+    print("{0:^17}".format("[2] 명예전당"))
+    print("{0:^17}".format(" [3] 종    료"))
     print()
     for _ in range(20):
         print('-', end='')
@@ -30,11 +31,12 @@ def start():
         if int(choice) == 1:
             return make_id()
         elif int(choice) == 2:
+            return show_record()
+        elif int(choice) == 3:
             print("   게임을 종료합니다")
             break
         elif (int(choice) < 1) or (int(choice) > 2):
             continue
-
 
 def make_id():
     while True:
@@ -49,7 +51,6 @@ def make_id():
         print()
         if char_name:
             return main(user)
-
 
 def main(user):
     printable = string.printable
@@ -134,10 +135,11 @@ def upgrade_item(user):
         if UserInfo.money < 100:
             print("{}님께서 보유하신 페나가 부족하여\n더 이상 게임을 진행할 수 없습니다".format(user))
             break
-        elif UserInfo.level == 45:
+        elif UserInfo.level == 2:
             print("{0:-^50}".format(" 축 하 합 니 다 "))
-            print("{}님은 최종 레벨 달성하여 데스나이트 검을 얻으셨습니다".format(user))
+            print("{}님은 최종 레벨을 달성하여 데스나이트 검을 얻으셨습니다".format(user))
             print("{0:-^55}".format(''))
+            write_record(user)
             break
         print()
         print(" [1] 기 본 강 화")
@@ -164,6 +166,32 @@ def upgrade_item(user):
             print("1 ~ 3 입력해주세요")
             print("============")
             continue
+
+def write_record(user):
+    txt = "{:^22}".format(user.name)
+    with open('./honor/record.txt', 'at') as f:
+        f.write(txt)
+
+def show_record():
+    print()
+    print()
+    print('{:=^30}'.format(''))
+    print('{0:^24}'.format('명 예 전 당'))
+    print('{0:^26}'.format('--------------'))
+    try:
+        f = open('./honor/record.txt', 'rt')
+        lines = f.readlines()
+        f.close()
+        for line in lines:
+            print(line)
+        for _ in range(4):
+            print()
+        choice = input('[1] 뒤로가기 : ')
+        if choice == '1':
+            return start()
+
+    except FileNotFoundError:
+        return start()
 
 if __name__ == '__main__':
     start()
