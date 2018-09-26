@@ -1,6 +1,6 @@
 ## WPS ThanksGivingDay Homework 
 
-###가위바위보 몬스터 잡기
+### 가위바위보 몬스터 잡기
 
 - 게임 방법
 
