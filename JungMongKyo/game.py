@@ -18,7 +18,6 @@ def turn_on():
             oppor = Rock_s_p()
             play_game = True
             while play_game:
-                start = timeit.default_timer()
                 if character.hp > 0 and monster.hp > 0:
                     oppor.chance(character, monster)
                     if character.result > monster.result:

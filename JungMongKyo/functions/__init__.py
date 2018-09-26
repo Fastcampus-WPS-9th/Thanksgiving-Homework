@@ -1,2 +1,2 @@
-from .character_monster.py import *
-from .rock_scissors_paper.py import *
+from .character_monster import *
+from .rock_scissors_paper import *
