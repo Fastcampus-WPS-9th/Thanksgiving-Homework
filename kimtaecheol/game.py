@@ -135,7 +135,7 @@ def upgrade_item(user):
         if UserInfo.money < 100:
             print("{}님께서 보유하신 페나가 부족하여\n더 이상 게임을 진행할 수 없습니다".format(user))
             break
-        elif UserInfo.level == 2:
+        elif UserInfo.level == 45:
             print("{0:-^50}".format(" 축 하 합 니 다 "))
             print("{}님은 최종 레벨을 달성하여 데스나이트 검을 얻으셨습니다".format(user))
             print("{0:-^55}".format(''))
