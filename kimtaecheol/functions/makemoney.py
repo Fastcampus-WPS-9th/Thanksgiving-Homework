@@ -123,7 +123,7 @@ class MakeMoney:
             print("============")
 
     def lotto(self):
-        print("한 줄당 {:,} 페나".format(1000))
+        print("한 줄에 {:,} 페나".format(1000))
         print("최대 5줄까지 가능")
         print()
         earn_money = 0
@@ -202,7 +202,7 @@ class MakeMoney:
                 UserInfo.money += earn_money
                 print("{0:-^34}".format(''))
                 print("페    나                  ￦ {:,}".format(money))
-                print("{0:-^34}".format(''))
+                print("{0:=^34}".format(''))
                 print("당 첨 번 호" + ( ' %02d ' * 6 ) % tuple(win_lotto))
                 print("보너스 번호 " + '{0:02}'.format(bonus_num))
                 print("{0:-^34}".format(''))
