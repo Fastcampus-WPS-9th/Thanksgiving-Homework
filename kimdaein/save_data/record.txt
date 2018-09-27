@@ -1,0 +1,5 @@
+
+daein, 6
+daein, 10
+daein, 1
+daei, 17
