@@ -35,7 +35,7 @@ class Card:
             return False
 
     def __repr__(self):
-        return 'cardstate=[ ' + self.shape.name + ', ' + str(self.card_num) + ' ]'
+        return '' + self.shape.name + ':' + str(self.card_num) + ''
 
 
 class GeneralCard(Card):
@@ -62,6 +62,7 @@ class Deck:
     card_list = []
 
     def __init__(self):
+        Deck.num = 53
         for sh in [Shape.CLUB, Shape.DIAMOND, Shape.HEART, Shape.SPADE]:
             for num in range(1, 14):
                 if num is 10:
@@ -76,9 +77,15 @@ class Deck:
         print('총 카드 숫자 :', len(Deck.card_list))
 
     @classmethod
-    def draw_card(cls):
-        random_num = random.randrange(1, 52)
+    def return_card(cls, card):
+        cls.num += 1
+        Deck.card_list.append(card)
 
+    @classmethod
+    def draw_card(cls):
+        cls.num -= 1
+        random_num = random.randrange(0, cls.num)
+        print('카드를 드로우하노 남은 카드수 : ', cls.num)
         return cls.card_list.pop(random_num)
 
     @classmethod

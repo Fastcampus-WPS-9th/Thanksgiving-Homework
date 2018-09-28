@@ -17,23 +17,30 @@ class Player:
     def get_card(self):
         self.cards.append(Deck.draw_card())
 
-    def raise_card(self, index):
-        return self.cards.pop(index)
+    # 카드는 내다
+    def raise_card(self, draped_card):
+        for i in range(0, len(self.cards)):
+            if draped_card.card_num is self.cards[i].card_num or draped_card.shape is self.cards[i].shape:
+                raised_card = self.cards[i]
+                self.cards.pop(i)
+                Deck.return_card(raised_card)
+                print('카드를 제출합니다..', raised_card)
+                return raised_card
+        else:
+            print('맞는 카드가 없어서 카드를 가져갑니다..')
+            self.cards.append(Deck.draw_card())
+            return draped_card
 
     def show_card_list(self):
-        print(self.cards)
-        return self.cards
+        print(self.username, '의 카드패 : ', self.cards)
+        return len(self.cards)
 
-    @property
-    def username(self):
-        return self.username
-
-    @username.setter
-    def username(self, value):
-        if value in ['!', '@', '#', '$', '%']:
-            raise ValueError('회원이름에 특수문자가 들어갈수 없습니다..')
-        else:
-            self._username = value
+    # @username.setter
+    # def username(self, value):
+    #     if value in ['!', '@', '#', '$', '%']:
+    #         raise ValueError('회원이름에 특수문자가 들어갈수 없습니다..')
+    #     else:
+    #         self._username = value
 
     # @property
     # def score_num(self):
